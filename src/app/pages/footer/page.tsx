@@ -5,9 +5,10 @@ const FooterPage = () => {
         <div className="grid gap-14 pb-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <a href="#Home" className="inline-flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--color-primary)] text-sm font-black text-white">
+              <img src="/icon-1.png" alt="BMO" className="h-[50px] w-[50px]" />
+              {/* <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--color-primary)] text-sm font-black text-white">
                 B
-              </span>
+              </span> */}
 
               <span className="text-xl font-bold">
                 BMO <span className="text-[var(--color-primary)]">EXTRACT</span>
