@@ -6,3 +6,26 @@
   --color-white: #ffffff;
   --color-light: #f5f7fa;
 }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+@keyframes scale-up {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.feature-animate {
+  animation: scale-up linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 35%;
+}

@@ -12,7 +12,7 @@ const Navpage = () => {
   }, [screen]);
 
   return (
-    <nav className="fixed right-0 left-0 flex h-20 rounded-2xl items-center justify-between bg-white px-4 m-3 z-10 sm:px-6 lg:px-12">
+    <nav className="fixed right-0 left-0  z-50 flex h-20 rounded-2xl items-center justify-between bg-white px-4 m-3 sm:px-6 lg:px-12">
       <div className="text-xl font-bold text-[var(--color-dark)] sm:text-2xl">
         <a href="#Home">
           <span className="text-[var(--color-primary)]">BMO</span> EXTRACT
