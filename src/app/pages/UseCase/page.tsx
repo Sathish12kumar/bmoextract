@@ -33,7 +33,7 @@ const UseCasePage = () => {
   return (
     <section
       id="use-cases"
-      className="scroll-mt-[90px] bg-[#F8FAFC] px-6 py-24 lg:px-12"
+      className="scroll-mt-[90px] bg-white  px-6 py-24 lg:px-12"
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid items-center gap-16 lg:grid-cols-[0.8fr_1.2fr]">
