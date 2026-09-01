@@ -2,6 +2,7 @@ import "./App.css";
 import Featurepage from "./app/pages/Feature/page";
 import Homepage from "./app/pages/Home/page";
 import Navpage from "./app/pages/Navbar/page";
+import Workspage from "./app/pages/Works/page";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       {/* <img src="/icon-1.png" alt="" /> */}
       <Homepage />
       <Featurepage />
+      <Workspage />
     </>
   );
 }
