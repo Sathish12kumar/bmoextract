@@ -1,35 +1,6 @@
-const UseCasePage = () => {
-  const useCases = [
-    {
-      number: "01",
-      title: "Lead Generation",
-      description:
-        "Discover businesses and potential customers in specific locations and build targeted prospect lists.",
-      icon: "fa-bullseye",
-    },
-    {
-      number: "02",
-      title: "Market Research",
-      description:
-        "Explore local businesses, competitors, and services to understand a market before making decisions.",
-      icon: "fa-chart-pie",
-    },
-    {
-      number: "03",
-      title: "Sales Prospecting",
-      description:
-        "Find companies and businesses that match your target audience and collect their available details.",
-      icon: "fa-handshake",
-    },
-    {
-      number: "04",
-      title: "Travel & Discovery",
-      description:
-        "Find hotels, restaurants, attractions, and interesting places when exploring a new location.",
-      icon: "fa-map-location-dot",
-    },
-  ];
+import { useCasesdt } from "../../assects/data";
 
+const UseCasePage = () => {
   return (
     <section
       id="use-cases"
@@ -80,7 +51,7 @@ const UseCasePage = () => {
             <div className="absolute left-8 top-0 h-full w-px bg-gray-200" />
 
             <div className="space-y-3">
-              {useCases.map((useCase) => (
+              {useCasesdt.map((useCase) => (
                 <div
                   key={useCase.number}
                   className="feature-animate group relative flex gap-6 rounded-2xl p-5 transition-all duration-300 hover:bg-white hover:shadow-lg hover:shadow-gray-200/60"

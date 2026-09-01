@@ -171,7 +171,8 @@ const FooterPage = () => {
           </div>
 
           <a
-            href="#Home"
+            href="https://bmoextract.com/"
+            target="_blank"
             className="group inline-flex w-fit items-center gap-2 rounded-xl bg-[var(--color-primary)] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-orange-500/20"
           >
             Get started

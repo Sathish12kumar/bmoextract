@@ -1,49 +1,6 @@
-const Workspage = () => {
-  const steps = [
-    {
-      number: "01",
-      icon: "fa-magnifying-glass",
-      title: "Choose what you need",
-      description:
-        "Search for restaurants, hotels, businesses, shops, services, and other places.",
-    },
-    {
-      number: "02",
-      icon: "fa-location-dot",
-      title: "Set your location",
-      description:
-        "Choose a city, area, or specific location to find relevant places nearby.",
-    },
-    {
-      number: "03",
-      icon: "fa-filter",
-      title: "Refine your results",
-      description:
-        "Review your results and focus on the places and information that matter to you.",
-    },
-    {
-      number: "04",
-      icon: "fa-database",
-      title: "Collect place details",
-      description:
-        "Get available names, addresses, websites, phone numbers, ratings, and locations.",
-    },
-    {
-      number: "05",
-      icon: "fa-table-list",
-      title: "Review your data",
-      description:
-        "Keep your collected information organized in an easy-to-read format.",
-    },
-    {
-      number: "06",
-      icon: "fa-file-excel",
-      title: "Export to Excel",
-      description:
-        "Download your results as an Excel file and use your data anywhere you need.",
-    },
-  ];
+import { stepsdt } from "../../assects/data";
 
+const Workspage = () => {
   return (
     <section
       id="workflow"
@@ -69,7 +26,7 @@ const Workspage = () => {
         </div>
 
         <div className="relative mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {steps.map((step) => (
+          {stepsdt.map((step) => (
             <div
               key={step.number}
               className="feature-animate group relative rounded-2xl border border-orange-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-orange-100/60"

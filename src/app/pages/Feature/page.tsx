@@ -1,3 +1,5 @@
+import { FeatureDt } from "../../assects/data";
+
 const Featurepage = () => {
   return (
     <section className="bg-white px-6 py-20 lg:px-12" id="feature">
@@ -23,44 +25,7 @@ const Featurepage = () => {
         </div>
 
         <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              icon: "fa-magnifying-glass",
-              title: "Search Smarter",
-              description:
-                "Find hotels, restaurants, shops, businesses, and more using simple search queries.",
-            },
-            {
-              icon: "fa-location-dot",
-              title: "Get Complete Details",
-              description:
-                "Collect names, addresses, phone numbers, websites, ratings, and locations in one place.",
-            },
-            {
-              icon: "fa-file-excel",
-              title: "Export to Excel",
-              description:
-                "Download your results as an Excel file for research, analysis, marketing, or planning.",
-            },
-            {
-              icon: "fa-bolt",
-              title: "Save Time",
-              description:
-                "Skip repetitive manual work and collect multiple place details in just a few clicks.",
-            },
-            {
-              icon: "fa-table-list",
-              title: "Stay Organized",
-              description:
-                "Keep your collected data clean, structured, and easy to review and manage.",
-            },
-            {
-              icon: "fa-rocket",
-              title: "Built for Everyone",
-              description:
-                "Perfect for research, marketing, business planning, travel, and discovering new opportunities.",
-            },
-          ].map((feature, index) => (
+          {FeatureDt.map((feature, index) => (
             <div
               key={feature.title}
               //   className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[var(--color-primary)]/20 hover:shadow-xl hover:shadow-orange-100/60"

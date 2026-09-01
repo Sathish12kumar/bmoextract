@@ -24,10 +24,12 @@ const HomeContent = () => {
           </p>
 
           <div className="mt-8 flex justify-center gap-3 lg:justify-start">
-            <button className="group inline-flex cursor-pointer items-center rounded-xl bg-[var(--color-primary)] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-orange-200 transition hover:-translate-y-1">
-              Get started
-              <i className="fa-solid fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1" />
-            </button>
+            <a href="https://bmoextract.com/" target="_blank">
+              <button className="group inline-flex cursor-pointer items-center rounded-xl bg-[var(--color-primary)] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-orange-200 transition hover:-translate-y-1">
+                Get started
+                <i className="fa-solid fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1" />
+              </button>
+            </a>
 
             <a
               href="#feature"

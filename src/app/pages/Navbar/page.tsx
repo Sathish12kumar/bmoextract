@@ -34,7 +34,9 @@ const Navpage = () => {
 
       <div className="flex items-center gap-2">
         <button className="group inline-flex cursor-pointer items-center justify-center rounded-xl bg-[var(--color-primary)] px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[var(--color-primary)]/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[var(--color-primary)]/30 active:scale-95 sm:px-5 sm:py-3">
-          <span className=" sm:inline">Get started</span>
+          <a href="https://bmoextract.com/" target="_blank">
+            <span className=" sm:inline">Get started</span>
+          </a>
           {/* <span className="sm:hidden">
             <i className="fa-solid fa-arrow-right" />
           </span> */}
@@ -57,7 +59,7 @@ const Navpage = () => {
       </div>
 
       {toggle && (
-        <ul className=" items-center gap-1 absolute right-[10px] top-[90px] bg-[var(--color-primary)]/20 rounded-2xl p-3 z-100">
+        <ul className=" items-center gap-1 absolute right-[10px] top-[90px] bg-white rounded-2xl p-3 z-100">
           {NavBardt.map((v, idx) => (
             <li
               key={idx}

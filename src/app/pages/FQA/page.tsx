@@ -1,50 +1,8 @@
 import { useState } from "react";
+import { faqsdt } from "../../assects/data";
 
 const FAQPage = () => {
   const [active, setActive] = useState<number | null>(0);
-
-  const faqs = [
-    {
-      question: "What is BMO Extract?",
-      answer:
-        "BMO Extract is a place discovery and data extraction platform designed to make finding and organizing place information easier. Instead of manually searching through different pages and copying details one by one, you can search for places and collect the available information in a structured way.",
-    },
-    {
-      question: "What types of places can I search for?",
-      answer:
-        "You can search for many different types of places, including hotels, restaurants, businesses, shops, services, offices, and other locations. Simply enter what you are looking for along with the location you are interested in.",
-    },
-    {
-      question: "What information can BMO Extract collect?",
-      answer:
-        "The available information can include place names, addresses, phone numbers, websites, ratings, locations, and other details depending on what is available for each place. The collected information is presented together so it is easier to review and work with.",
-    },
-    {
-      question: "Can I export the results to Excel?",
-      answer:
-        "Yes. After collecting your results, you can export the available information into an Excel file. This makes it easier to analyze, filter, organize, share, or continue working with your data using your existing workflow.",
-    },
-    {
-      question: "Who is BMO Extract useful for?",
-      answer:
-        "BMO Extract can be useful for marketers looking for businesses, sales teams researching prospects, researchers collecting location information, business owners exploring markets, travelers finding places, and anyone who needs organized place data.",
-    },
-    {
-      question: "Do I need technical knowledge to use BMO Extract?",
-      answer:
-        "No. BMO Extract is designed to keep the process simple. You do not need programming or technical knowledge to search for places, review available information, and export your results.",
-    },
-    {
-      question: "How does the search process work?",
-      answer:
-        "Start by searching for the type of place you need and specify the relevant location. BMO Extract then helps you discover matching places and gather the available information so you can review the results and decide what you want to use.",
-    },
-    {
-      question: "Can I use the exported data for my business?",
-      answer:
-        "The exported data can be useful for research, planning, prospecting, analysis, and other workflows. Make sure your use of the information follows applicable laws, regulations, and the terms governing the underlying data sources.",
-    },
-  ];
 
   return (
     <section
@@ -74,7 +32,7 @@ const FAQPage = () => {
 
         {/* FAQ Content */}
         <div className="mx-auto mt-14 max-w-4xl">
-          {faqs.map((faq, index) => {
+          {faqsdt.map((faq, index) => {
             const isOpen = active === index;
 
             return (

@@ -11,8 +11,6 @@ function App() {
   return (
     <>
       <Navpage />
-      {/* <h1>Wellcome to BMO</h1> */}
-      {/* <img src="/icon-1.png" alt="" /> */}
       <Homepage />
       <Featurepage />
       <Workspage />
