@@ -1,5 +1,6 @@
 import "./App.css";
 import Featurepage from "./app/pages/Feature/page";
+import FooterPage from "./app/pages/footer/page";
 import FAQPage from "./app/pages/FQA/page";
 import Homepage from "./app/pages/Home/page";
 import Navpage from "./app/pages/Navbar/page";
@@ -17,6 +18,7 @@ function App() {
       <Workspage />
       <UseCasePage />
       <FAQPage />
+      <FooterPage />
     </>
   );
 }
