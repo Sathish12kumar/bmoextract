@@ -2,10 +2,13 @@ import { FeatureDt } from "../../assects/data";
 
 const Featurepage = () => {
   return (
-    <section className="bg-white px-6 py-20 lg:px-12" id="feature">
+    <section
+      className="feature-section bg-white px-6 py-20 lg:px-12"
+      id="feature"
+    >
       <div className="mx-auto max-w-7xl">
-        {/* <div className="mx-auto max-w-2xl text-center"> */}
-        <div className="feature-animate mx-auto max-w-2xl text-center">
+        {/* Header */}
+        <div className="feature-header mx-auto max-w-2xl text-center">
           <span className="text-sm font-semibold uppercase tracking-wider text-[var(--color-primary)]">
             Features
           </span>
@@ -24,21 +27,23 @@ const Featurepage = () => {
           </p>
         </div>
 
+        {/* Cards */}
         <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {FeatureDt.map((feature, index) => (
             <div
               key={feature.title}
-              //   className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[var(--color-primary)]/20 hover:shadow-xl hover:shadow-orange-100/60"
-              className="feature-animate group relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[var(--color-primary)]/20 hover:shadow-xl hover:shadow-orange-100/60"
-              style={{
-                animationDelay: `${index * 100}ms`,
-              }}
+              className="feature-card group relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-7 shadow-sm"
+              style={
+                {
+                  "--delay": `${index * 80}ms`,
+                } as React.CSSProperties
+              }
             >
-              <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[var(--color-primary)]/5 transition-transform duration-500 group-hover:scale-[2.5]" />
+              <div className="feature-circle absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[var(--color-primary)]/5" />
 
-              <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:shadow-lg group-hover:shadow-[var(--color-primary)]/20">
+              <div className="feature-icon relative flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-primary)]/10">
                 <i
-                  className={`fa-solid ${feature.icon} text-lg text-[var(--color-primary)] transition-colors duration-300 group-hover:text-white`}
+                  className={`fa-solid ${feature.icon} text-lg text-[var(--color-primary)]`}
                 />
               </div>
 
@@ -50,7 +55,7 @@ const Featurepage = () => {
                 {feature.description}
               </p>
 
-              <div className="relative mt-5 flex items-center text-sm font-medium text-[var(--color-primary)] opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+              <div className="feature-link relative mt-5 flex items-center text-sm font-medium text-[var(--color-primary)]">
                 Learn more
                 <i className="fa-solid fa-arrow-right ml-2 text-xs" />
               </div>
