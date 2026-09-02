@@ -4,11 +4,11 @@ const UseCasePage = () => {
   return (
     <section
       id="use-cases"
-      className="scroll-mt-[90px] bg-white  px-6 py-24 lg:px-12"
+      className="scroll-mt-[90px] bg-white px-6 py-24 lg:px-12"
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid items-center gap-16 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
+          <div className="usecase-header">
             <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-[var(--color-primary)]">
               <span className="h-2 w-2 rounded-full bg-[var(--color-primary)]" />
               Use Cases
@@ -54,9 +54,9 @@ const UseCasePage = () => {
               {useCasesdt.map((useCase) => (
                 <div
                   key={useCase.number}
-                  className="feature-animate group relative flex gap-6 rounded-2xl p-5 transition-all duration-300 hover:bg-white hover:shadow-lg hover:shadow-gray-200/60"
+                  className="usecase-card group relative flex gap-6 rounded-2xl p-5"
                 >
-                  <div className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border-4 border-[#F8FAFC] bg-white text-[var(--color-primary)] shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--color-primary)] group-hover:text-white">
+                  <div className="usecase-icon relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border-4 border-[#F8FAFC] bg-white text-[var(--color-primary)] shadow-sm">
                     <i className={`fa-solid ${useCase.icon}`} />
                   </div>
 
@@ -66,7 +66,7 @@ const UseCasePage = () => {
                         {useCase.number}
                       </span>
 
-                      <i className="fa-solid fa-arrow-up-right-from-square text-xs text-gray-300 transition group-hover:text-[var(--color-primary)]" />
+                      <i className="usecase-arrow fa-solid fa-arrow-up-right-from-square text-xs text-gray-300" />
                     </div>
 
                     <h3 className="mt-2 text-xl font-bold text-[var(--color-dark)]">

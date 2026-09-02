@@ -26,17 +26,17 @@ const Workspage = () => {
         </div>
 
         <div className="relative mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {stepsdt.map((step) => (
+          {stepsdt.map((step, index) => (
             <div
-              key={step.number}
-              className="feature-animate group relative rounded-2xl border border-orange-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-orange-100/60"
+              key={index}
+              className="workflow-card group relative rounded-2xl border border-orange-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-orange-100/60"
             >
               <div className="flex items-start justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:scale-110 group-hover:rotate-[-4deg] group-hover:bg-[var(--color-primary)] group-hover:text-white">
                   <i className={`fa-solid ${step.icon}`} />
                 </div>
 
-                <span className="text-4xl font-black text-orange-100 transition-colors group-hover:text-orange-200">
+                <span className="text-4xl font-black text-orange-100 transition-all duration-300 group-hover:scale-110 group-hover:text-orange-200">
                   {step.number}
                 </span>
               </div>
@@ -53,32 +53,6 @@ const Workspage = () => {
             </div>
           ))}
         </div>
-
-        {/* <div className="relative mt-16 overflow-hidden rounded-3xl bg-[var(--color-dark)] px-6 py-12 text-center sm:px-10">
-          <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[var(--color-primary)]/20 blur-3xl" />
-          <div className="absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-orange-400/10 blur-3xl" />
-
-          <div className="relative">
-            <span className="text-sm font-semibold uppercase tracking-wider text-[var(--color-primary)]">
-              Less work. More results.
-            </span>
-
-            <h3 className="mx-auto mt-3 max-w-2xl text-3xl font-bold text-white sm:text-4xl">
-              Turn local searches into
-              <span className="text-[var(--color-primary)]"> useful data.</span>
-            </h3>
-
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-gray-400">
-              Stop spending hours collecting information manually. Search,
-              organize, and export everything from one place.
-            </p>
-
-            <button className="group mt-7 inline-flex items-center rounded-xl bg-[var(--color-primary)] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-500/20">
-              Start collecting data
-              <i className="fa-solid fa-arrow-right ml-2 transition-transform group-hover:translate-x-1" />
-            </button>
-          </div>
-        </div> */}
       </div>
     </section>
   );

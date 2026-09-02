@@ -7,7 +7,6 @@ const Featurepage = () => {
       id="feature"
     >
       <div className="mx-auto max-w-7xl">
-        {/* Header */}
         <div className="feature-header mx-auto max-w-2xl text-center">
           <span className="text-sm font-semibold uppercase tracking-wider text-[var(--color-primary)]">
             Features
@@ -27,17 +26,14 @@ const Featurepage = () => {
           </p>
         </div>
 
-        {/* Cards */}
         <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {FeatureDt.map((feature, index) => (
             <div
               key={feature.title}
+              style={{
+                animationDelay: `${index * 120}ms`,
+              }}
               className="feature-card group relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-7 shadow-sm"
-              style={
-                {
-                  "--delay": `${index * 80}ms`,
-                } as React.CSSProperties
-              }
             >
               <div className="feature-circle absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[var(--color-primary)]/5" />
 
