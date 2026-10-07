@@ -1,145 +1,176 @@
+import { useEffect, useState } from "react";
+
 const HomeContent = () => {
+  const [activeTab] = useState<"results" | "search">("results");
+  const [showLightbox, setShowLightbox] = useState(false);
+
+  useEffect(() => {
+    if (showLightbox) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      if (window.lenisInstance) window.lenisInstance.stop();
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      if (window.lenisInstance) window.lenisInstance.start();
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      if (window.lenisInstance) window.lenisInstance.start();
+    };
+  }, [showLightbox]);
+
+  const image = activeTab === "results" ? "/result.png" : "/extract.png";
+
   return (
-    <section className="flex min-h-[calc(100dvh-80px)] w-full items-center overflow-hidden px-6 py-12 lg:px-12">
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-        <div className="home-content text-center lg:text-left">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[var(--color-primary)] shadow-sm">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--color-primary)]" />
-            BMO EXTRACT
-          </span>
+    <div className="relative w-full overflow-hidden">
 
-          <h1 className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight text-[var(--color-dark)] sm:text-5xl lg:text-6xl xl:text-7xl">
-            Find places.
-            <br />
-            Get details.
-            <br />
-            <span className="text-[var(--color-primary)]">Export easily.</span>
-          </h1>
+      {/* ================= HOME CONTENT ================= */}
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-12">
 
-          <p className="mx-auto mt-6 max-w-xl text-base leading-7 text-gray-500 sm:text-lg lg:mx-0">
-            Discover businesses, restaurants, hotels, shops, and more. Collect
-            useful information and export your results to Excel in just a few
-            clicks.
-          </p>
+        {/* Top Header Badge */}
+        <div className="reveal-header flex justify-center">
+          <div className="inline-flex items-center gap-3 rounded-2xl border border-white/70 bg-white/80 px-4 py-2.5 shadow-[0_8px_30px_rgba(15,23,42,0.08)] ring-1 ring-orange-100/60 backdrop-blur-xl">
+            {/* Live indicator */}
+            <div className="relative flex h-2.5 w-2.5 shrink-0">
+              <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/50" />
+              <span className="relative h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.55)]" />
+            </div>
 
-          <div className="mt-8 flex justify-center gap-3 lg:justify-start">
-            <a
-              href="https://bmoextract.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center rounded-xl bg-[var(--color-primary)] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-orange-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-200"
-            >
-              Get started
-              <i className="fa-solid fa-arrow-right ml-2 text-xs transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
+            {/* Label */}
+            <span className="text-[11px] font-bold tracking-[0.12em] text-slate-700">
+              INTELLIGENCE SYSTEM
+            </span>
 
-            <a
-              href="#feature"
-              className="inline-flex items-center rounded-xl border border-gray-200 bg-white px-6 py-3.5 text-sm font-semibold text-[var(--color-dark)] transition-all duration-300 hover:-translate-y-1 hover:bg-gray-50 hover:shadow-md"
-            >
-              Explore
-            </a>
+            {/* Divider */}
+            <span className="h-5 w-px bg-gradient-to-b from-transparent via-slate-200 to-transparent" />
+
+            {/* Status */}
+            <span className="flex items-center gap-1.5 text-[11px] font-extrabold tracking-[0.08em] text-orange-600">
+              <svg
+                className="h-3.5 w-3.5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M11.3 1.7 4 11h4.7l-.8 7.3L16 9h-4.7l0-7.3Z" />
+              </svg>
+              FAST &amp; ACCURATE
+            </span>
           </div>
 
-          <div className="mt-8 flex justify-center gap-6 text-xs text-gray-400 lg:justify-start">
-            <span className="flex items-center gap-2">
-              <i className="fa-solid fa-circle-check text-green-500" />
-              Easy to use
-            </span>
 
-            <span className="flex items-center gap-2">
-              <i className="fa-solid fa-circle-check text-green-500" />
-              Excel export
-            </span>
+        </div>
 
-            <span className="flex items-center gap-2">
-              <i className="fa-solid fa-circle-check text-green-500" />
-              Fast results
-            </span>
+        {/* Main Title */}
+        <div className="reveal-header mt-6 text-center">
+          <h1 className="font-display mx-auto max-w-4xl text-3xl font-black leading-[1.12] tracking-tight text-[var(--color-dark)] sm:text-5xl lg:text-6xl">
+            Extract Google Maps Data <br className="hidden sm:inline" />
+            <span className="text-gradient-orange">Directly to Excel</span>
+          </h1>
+
+          {/* <p className="mx-auto mt-4 max-w-2xl text-sm font-normal leading-relaxed text-gray-500 sm:text-base lg:text-lg">
+            Scrape Google search results &amp; Google Maps for business data. Collect verified phone numbers, websites, and complete addresses directly into Excel.
+          </p> */}
+
+          {/* Button */}
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            <a
+              href="https://bmoextract.com/extract"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#ff7c36] via-[#ff6822] to-[#ff5216] px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-orange-500/25 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/35 active:scale-95"
+            >
+              <span>Start Extraction Free</span>
+              <i className="fa-solid fa-arrow-right text-xs" />
+            </a>
           </div>
         </div>
 
-        <div className="home-banner relative mx-auto w-full max-w-2xl lg:max-w-3xl">
-          <div className="home-banner-float relative">
-            <div className="absolute -inset-10 rounded-full bg-orange-400/10 blur-3xl" />
+        {/* ================= PRODUCT PREVIEW ================= */}
+        <div className="reveal-scale stagger-2 relative mx-auto mt-10 w-full max-w-5xl sm:mt-12">
+          <div className="overflow-hidden rounded-2xl border border-gray-200/90 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.08)] sm:rounded-3xl">
 
-            <div className="absolute -left-8 top-10 h-20 w-20 rotate-12 rounded-2xl border border-orange-200/60 bg-orange-100/50" />
-
-            <div className="absolute -right-10 bottom-8 h-28 w-28 rounded-full border border-orange-200/50 bg-orange-100/40" />
-
-            <div className="banner-image relative z-10 overflow-hidden rounded-[24px] border border-white bg-white p-2 shadow-[0_35px_100px_rgba(31,41,55,0.18)]">
-              <div className="relative overflow-hidden rounded-[18px] bg-[#f5f5f5]">
-                <div className="absolute left-0 right-0 top-0 z-10 flex h-10 items-center gap-2 border-b border-gray-200 bg-white/95 px-4 backdrop-blur-md">
-                  <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
-
-                  <div className="ml-3 h-5 flex-1 rounded-md bg-gray-50" />
-                </div>
-
-                <img
-                  src="/result.png"
-                  alt="BMO Extract dashboard"
-                  className="block  w-full object-cover object-top pt-10 h-[450px]"
-                />
+            {/* Window Header */}
+            <div className="flex items-center justify-between border-b border-gray-100 bg-gray-50/80 px-4 py-3">
+              {/* Window dots */}
+              <div className="flex items-center gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
               </div>
+
+              {/* Expand */}
+              <button
+                type="button"
+                onClick={() => setShowLightbox(true)}
+                title="Expand image preview"
+                className="flex h-7 w-7 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-500 transition hover:border-orange-400 hover:text-orange-600"
+              >
+                <i className="fa-solid fa-expand text-xs" />
+              </button>
             </div>
 
-            <div className="banner-search absolute -left-8 top-24 z-20 hidden items-center gap-3 rounded-2xl border border-white/80 bg-white/95 px-4 py-3 shadow-[0_20px_50px_rgba(31,41,55,0.15)] backdrop-blur-md sm:flex">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-50 text-[var(--color-primary)]">
-                <i className="fa-solid fa-magnifying-glass text-sm" />
-              </div>
-
-              <div>
-                <p className="text-xs font-bold text-[var(--color-dark)]">
-                  Search complete
-                </p>
-
-                <p className="mt-1 text-[10px] text-gray-400">
-                  1,284 places found
-                </p>
-              </div>
+            {/* Screenshot */}
+            <div
+              onClick={() => setShowLightbox(true)}
+              className="group relative cursor-zoom-in bg-white"
+            >
+              <img
+                src={image}
+                alt="BMO Extract interface preview"
+                className="block h-auto max-h-[380px] w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.008]"
+              />
             </div>
 
-            <div className="banner-excel absolute -right-8 bottom-24 z-20 flex items-center gap-3 rounded-2xl border border-white/80 bg-white/95 px-4 py-3 shadow-[0_20px_50px_rgba(31,41,55,0.15)] backdrop-blur-md">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-green-50 text-green-500">
-                <i className="fa-solid fa-file-excel text-sm" />
-              </div>
-
-              <div>
-                <p className="text-xs font-bold text-[var(--color-dark)]">
-                  Export ready
-                </p>
-
-                <p className="mt-1 text-[10px] text-gray-400">places.xlsx</p>
-              </div>
-
-              <div className="ml-1 flex h-5 w-5 items-center justify-center rounded-full bg-green-50">
-                <i className="fa-solid fa-check text-[9px] text-green-500" />
-              </div>
-            </div>
-
-            <div className="banner-location absolute -bottom-6 left-10 z-20 flex items-center gap-2 rounded-full border border-white/80 bg-white/95 px-5 py-3 shadow-[0_15px_40px_rgba(31,41,55,0.14)] backdrop-blur-md">
-              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-orange-50">
-                <i className="fa-solid fa-location-dot text-[10px] text-[var(--color-primary)]" />
-              </div>
-
-              <span className="text-xs font-bold text-[var(--color-dark)]">
-                846 places collected
-              </span>
-            </div>
-
-            <div className="absolute -right-3 -top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-primary)] text-white shadow-lg shadow-orange-200">
-              <i className="fa-solid fa-bolt text-xs" />
-            </div>
-
-            <div className="absolute -bottom-12 right-24 h-3 w-3 rounded-full bg-[var(--color-primary)] shadow-lg shadow-orange-300" />
-
-            <div className="absolute left-1/2 top-1/2 z-0 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-300/10 blur-3xl" />
           </div>
         </div>
       </div>
-    </section>
+
+      {/* =====================================================
+          FULL HOME PAGE BOTTOM WHITE FADE
+      ====================================================== */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 left-0 z-20 h-28 w-full bg-gradient-to-t from-white via-white/80 to-transparent sm:h-36 lg:h-48"
+      />
+
+      {/* Lightbox */}
+      {showLightbox && (
+        <div
+          data-lenis-prevent
+          onClick={() => setShowLightbox(false)}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-md overscroll-contain"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-h-[92vh] w-full max-w-5xl overflow-hidden rounded-2xl border border-white/20 bg-white shadow-2xl"
+          >
+            <div className="flex items-center justify-between border-b border-gray-100 bg-gray-50 px-5 py-3">
+              <span className="font-display text-sm font-bold text-gray-900">
+                BMO Extract — Results Dashboard
+              </span>
+
+              <button
+                type="button"
+                onClick={() => setShowLightbox(false)}
+                className="flex h-7 w-7 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-200 hover:text-gray-800"
+              >
+                <i className="fa-solid fa-xmark text-sm" />
+              </button>
+            </div>
+
+            <div className="max-h-[calc(92vh-60px)] overflow-auto bg-gray-100 p-2">
+              <img
+                src={image}
+                alt="Enlarged BMO Extract interface"
+                className="mx-auto block h-auto w-full rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

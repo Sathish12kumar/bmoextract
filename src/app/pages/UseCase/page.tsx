@@ -4,82 +4,118 @@ const UseCasePage = () => {
   return (
     <section
       id="use-cases"
-      className="scroll-mt-[90px] bg-white px-6 py-24 lg:px-12"
+      className="reveal-section scroll-mt-20 relative bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28"
     >
-      <div className="mx-auto max-w-7xl">
-        <div className="grid items-center gap-16 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="usecase-header">
-            <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-[var(--color-primary)]">
-              <span className="h-2 w-2 rounded-full bg-[var(--color-primary)]" />
-              Use Cases
-            </span>
+      {/* Ambient background decoration */}
+      <div className="pointer-events-none absolute left-0 top-1/3 h-96 w-96 rounded-full bg-orange-400/5 blur-3xl" />
 
-            <h2 className="mt-5 text-4xl font-bold leading-tight text-[var(--color-dark)] sm:text-5xl">
-              One tool.
-              <br />
-              <span className="text-[var(--color-primary)]">
-                Many possibilities.
-              </span>
-            </h2>
+      <div className="relative mx-auto max-w-7xl">
+        <div className="grid items-start gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
 
-            <p className="mt-6 max-w-md text-base leading-7 text-gray-500">
-              From finding new customers to researching an entire market, turn
-              location-based searches into useful information.
-            </p>
+          {/* =====================================================
+              LEFT — STICKY IMAGE
+          ===================================================== */}
+          <div className="usecase-header reveal-left self-start lg:sticky lg:top-28">
+            <div className="relative mx-auto w-full max-w-md lg:mx-0">
+              <div className="group overflow-hidden rounded-3xl border border-orange-100/90 bg-gradient-to-b from-orange-50/60 via-white to-orange-50/30 p-6 sm:p-7 shadow-sm">
 
-            <div className="mt-8 flex items-center gap-4">
-              <div className="flex -space-x-2">
-                {["B", "M", "O"].map((letter) => (
-                  <div
-                    key={letter}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-[#F8FAFC] bg-[var(--color-primary)] text-xs font-bold text-white"
-                  >
-                    {letter}
-                  </div>
-                ))}
+                {/* Top Badge */}
+                <div className="mb-3 flex justify-center">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-orange-200/80 bg-orange-100/70 px-3 py-1 text-[11px] font-bold text-[var(--color-primary)]">
+                    <i className="fa-solid fa-map-location-dot text-[10px]" />
+                    <span>Global Intelligence</span>
+                  </span>
+                </div>
+
+                <div className="my-auto flex w-full items-center justify-center py-2 sm:py-3">
+                  <img
+                    src="/usecase.svg"
+                    alt="BMO Extract Location Intelligence and Prospecting Illustration"
+                    className="h-auto max-h-[220px] sm:max-h-[260px] lg:max-h-none w-full object-contain drop-shadow-sm transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Image Card Description */}
+                <p className="mt-4 text-center text-xs leading-relaxed text-gray-600 sm:text-sm">
+                  Discover high-quality business opportunities from local
+                  markets and turn location data into actionable prospects.
+                </p>
+
+                {/* Image Card Footer */}
+                <div className="mt-4 flex items-center justify-between border-t border-gray-100 pt-3 text-xs text-gray-500">
+                  <span className="font-semibold text-gray-700">
+                    Multi-Channel Prospecting
+                  </span>
+
+                  <span className="font-bold text-[var(--color-primary)]">
+                    60+ Countries
+                  </span>
+                </div>
               </div>
-
-              <p className="text-sm text-gray-500">
-                Built for businesses,
-                <br />
-                researchers & creators.
-              </p>
             </div>
           </div>
 
-          <div className="relative">
-            <div className="absolute left-8 top-0 h-full w-px bg-gray-200" />
+          {/* =====================================================
+              RIGHT — USE CASE CONTENT
+          ===================================================== */}
+          <div className="space-y-3">
 
-            <div className="space-y-3">
-              {useCasesdt.map((useCase) => (
-                <div
-                  key={useCase.number}
-                  className="usecase-card group relative flex gap-6 rounded-2xl p-5"
-                >
-                  <div className="usecase-icon relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border-4 border-[#F8FAFC] bg-white text-[var(--color-primary)] shadow-sm">
-                    <i className={`fa-solid ${useCase.icon}`} />
-                  </div>
+            {/* Header */}
+            <div className="usecase-header reveal-header mb-8">
+              <div className="inline-flex items-center gap-2 rounded-full border border-orange-200/80 bg-orange-50/80 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[var(--color-primary)]">
+                <i className="fa-solid fa-crosshairs text-[10px]" />
+                <span>Use Cases</span>
+              </div>
 
-                  <div className="flex-1 pt-1">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold tracking-widest text-gray-300">
-                        {useCase.number}
-                      </span>
+              <h2 className="font-display mt-4 text-3xl font-extrabold leading-tight text-[var(--color-dark)] sm:text-4xl lg:text-5xl">
+                Built for real-world
+                <br />
+                <span className="text-gradient-orange">
+                  business needs.
+                </span>
+              </h2>
 
-                      <i className="usecase-arrow fa-solid fa-arrow-up-right-from-square text-xs text-gray-300" />
-                    </div>
+              <p className="mt-4 max-w-lg text-sm leading-relaxed text-gray-500 sm:text-base">
+                Find local businesses, discover opportunities, and get the
+                data you need to make faster business decisions.
+              </p>
+            </div>
 
-                    <h3 className="mt-2 text-xl font-bold text-[var(--color-dark)]">
+            {/* Use Case Cards */}
+            {useCasesdt.map((useCase, idx) => (
+              <div
+                key={useCase.number}
+                className={`usecase-card reveal-right stagger-${idx + 1} group relative flex items-start gap-4 overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:border-orange-300 hover:shadow-md`}
+              >
+                {/* Left Accent Border */}
+                <div className="absolute left-0 top-0 h-full w-1 rounded-2xl bg-orange-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+                {/* Icon */}
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-orange-100 bg-orange-50 text-[var(--color-primary)] transition-colors duration-300 group-hover:border-orange-200 group-hover:bg-orange-100">
+                  <i className={`fa-solid ${useCase.icon} text-sm`} />
+                </div>
+
+                {/* Content */}
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="font-display text-base font-bold text-[var(--color-dark)]">
                       {useCase.title}
                     </h3>
 
-                    <p className="mt-2 max-w-lg text-sm leading-6 text-gray-500">
-                      {useCase.description}
-                    </p>
+                    <span className="rounded-md border border-gray-100 bg-gray-50 px-2 py-1 font-mono text-[10px] font-bold text-gray-400">
+                      {useCase.number}
+                    </span>
                   </div>
+                  <p className="mt-2 text-xs leading-relaxed text-gray-500 sm:text-sm">
+                    {useCase.description}
+                  </p>
+                  {/* Tag */}
+                  {/* <span className="mt-3 inline-block rounded-full border border-orange-100 bg-orange-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-orange-500">
+                    {useCase.tag}
+                  </span> */}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
