@@ -261,16 +261,24 @@ const Navpage = () => {
       />
 
       {/* =====================================================
-          MOBILE / TABLET DRAWER
+          MOBILE / TABLET DRAWER (Wrapped in overflow-hidden container to guarantee zero page overflow)
       ====================================================== */}
-      <aside
-        data-lenis-prevent
-        className={`fixed right-0 top-0 z-[70] flex h-dvh w-[88vw] max-w-[360px] flex-col bg-white shadow-2xl transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${toggle ? "translate-x-0" : "translate-x-full"
-          }`}
-        role="dialog"
-        aria-label="Mobile Navigation"
+      <div
+        className={`fixed inset-0 z-[70] overflow-hidden lg:hidden ${
+          toggle ? "pointer-events-auto block" : "pointer-events-none invisible hidden"
+        }`}
         aria-hidden={!toggle}
       >
+        <aside
+          data-lenis-prevent
+          className={`absolute right-0 top-0 flex h-dvh w-[88vw] max-w-[360px] flex-col bg-white shadow-2xl transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            toggle
+              ? "translate-x-0 visible opacity-100"
+              : "translate-x-full invisible opacity-0"
+          }`}
+          role="dialog"
+          aria-label="Mobile Navigation"
+        >
         {/* =================================================
             DRAWER HEADER
         ================================================= */}
@@ -406,6 +414,7 @@ const Navpage = () => {
           </a>
         </div>
       </aside>
+    </div>
 
       {/* =====================================================
           CONTACT MODAL

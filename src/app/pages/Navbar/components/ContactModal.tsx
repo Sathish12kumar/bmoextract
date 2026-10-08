@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
 
 interface ContactModalProps {
@@ -5,22 +6,21 @@ interface ContactModalProps {
   onClose: () => void;
 }
 
-interface FormData {
+interface ContactFormData {
   fullName: string;
   email: string;
   phone: string;
   message: string;
 }
 
-const initialFormData: FormData = {
-  fullName: "",
-  email: "",
-  phone: "",
-  message: "",
-};
+const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
+  const [formData, setFormData] = useState<ContactFormData>({
+    fullName: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
-export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
-  const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -37,12 +37,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
 
-  /*
-   * STRICT SCROLL LOCK:
-   * 1. Locks document.body and document.documentElement.
-   * 2. Stops Lenis smooth scrolling instance if active.
-   * 3. Restores scroll automatically on close or unmount.
-   */
+  /* Lock body & Lenis smooth scroll while popup is open */
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -135,32 +130,32 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   };
 
   const inputClass =
-    "w-full rounded-xl border border-stone-200 bg-stone-50/70 px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 outline-none transition-all duration-200 focus:border-orange-500 focus:bg-white focus:ring-4 focus:ring-orange-500/10";
+    "w-full rounded-xl border border-stone-200 bg-stone-50/70 px-3.5 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm text-gray-900 placeholder:text-gray-400 outline-none transition-all duration-200 focus:border-orange-500 focus:bg-white focus:ring-4 focus:ring-orange-500/10";
 
   return (
     <div
       data-lenis-prevent
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/45 p-4 sm:p-6 backdrop-blur-md overflow-y-auto overscroll-contain animate-fade-in"
+      className="fixed inset-0 z-[100] flex h-full w-full items-center justify-center overflow-y-auto overscroll-contain bg-slate-950/60 p-4 sm:p-6 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       aria-labelledby="contact-modal-title"
     >
-      {/* Backdrop */}
+      {/* Full Backdrop */}
       <div
         onClick={onClose}
-        className="absolute inset-0 cursor-pointer"
+        className="fixed inset-0 cursor-pointer"
         aria-hidden="true"
       />
 
-      {/* Clean & Simple Modal Card */}
-      <div className="relative z-10 w-full max-w-[460px] overflow-hidden rounded-[26px] border border-stone-200/90 bg-white p-6 sm:p-7 shadow-2xl transition-all">
+      {/* Spacious, Centered & Responsive Modal Card */}
+      <div className="relative z-10 mx-auto my-auto w-full max-w-[420px] max-h-[92dvh] overflow-y-auto rounded-2xl sm:rounded-3xl border border-stone-200/90 bg-white p-5 sm:p-7 shadow-2xl transition-all animate-scale">
         
         {/* Top Close Button */}
         <button
           type="button"
           onClick={onClose}
           aria-label="Close modal"
-          className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-stone-100 text-stone-400 transition-colors hover:bg-stone-200 hover:text-stone-700 cursor-pointer"
+          className="absolute right-3.5 top-3.5 sm:right-5 sm:top-5 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-stone-100 text-stone-400 transition-colors hover:bg-stone-200 hover:text-stone-700 cursor-pointer"
         >
           <i className="fa-solid fa-xmark text-sm" />
         </button>
@@ -168,36 +163,36 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
         {!isSubmitted ? (
           <div>
             {/* Header */}
-            <div className="mb-5 pr-8">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-orange-50 border border-orange-100 text-orange-500 mb-3">
-                <i className="fa-solid fa-envelope text-sm" />
+            <div className="mb-4 sm:mb-5 pr-8">
+              <div className="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-orange-50 border border-orange-100 text-orange-500 mb-2 sm:mb-2.5">
+                <i className="fa-solid fa-envelope text-xs sm:text-sm" />
               </div>
 
               <h3
                 id="contact-modal-title"
-                className="font-display text-xl sm:text-2xl font-black text-gray-900 tracking-tight"
+                className="font-display text-lg sm:text-2xl font-black text-gray-900 tracking-tight"
               >
                 Contact Us
               </h3>
 
               <p className="mt-1 text-xs sm:text-sm text-gray-500 leading-relaxed">
-                Have questions about extraction or custom requirements? Send us a message and our team will get back to you shortly.
+                Have questions about extraction or custom volume? Drop us a line and we&apos;ll respond shortly.
               </p>
             </div>
 
             {/* Error Message */}
             {errorMessage && (
-              <div className="mb-4 rounded-xl border border-red-100 bg-red-50 px-3.5 py-2.5 text-xs font-semibold text-red-600 flex items-center gap-2">
+              <div className="mb-3.5 rounded-xl border border-red-100 bg-red-50 px-3.5 py-2 text-xs font-semibold text-red-600 flex items-center gap-2">
                 <i className="fa-solid fa-circle-exclamation text-xs shrink-0" />
                 <span>{errorMessage}</span>
               </div>
             )}
 
             {/* Simple Form */}
-            <form onSubmit={handleSubmit} className="space-y-3.5">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-3.5">
               {/* Full Name */}
               <div>
-                <label className="mb-1 block text-xs font-bold text-gray-700">
+                <label className="mb-1 block text-[11px] sm:text-xs font-bold text-gray-700">
                   Full Name <span className="text-orange-500">*</span>
                 </label>
                 <input
@@ -213,7 +208,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
               {/* Work Email */}
               <div>
-                <label className="mb-1 block text-xs font-bold text-gray-700">
+                <label className="mb-1 block text-[11px] sm:text-xs font-bold text-gray-700">
                   Work Email <span className="text-orange-500">*</span>
                 </label>
                 <input
@@ -229,7 +224,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
               {/* Phone / WhatsApp (Optional) */}
               <div>
-                <label className="mb-1 block text-xs font-bold text-gray-700">
+                <label className="mb-1 block text-[11px] sm:text-xs font-bold text-gray-700">
                   Phone / WhatsApp <span className="text-gray-400 font-normal">(Optional)</span>
                 </label>
                 <input
@@ -244,26 +239,26 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
               {/* Message */}
               <div>
-                <label className="mb-1 block text-xs font-bold text-gray-700">
-                  Message / Target Query <span className="text-orange-500">*</span>
+                <label className="mb-1 block text-[11px] sm:text-xs font-bold text-gray-700">
+                  Message / Requirements <span className="text-orange-500">*</span>
                 </label>
                 <textarea
-                  rows={3}
+                  rows={2.5}
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell us what places, categories, or cities you want to extract..."
+                  placeholder="Tell us what cities, categories, or places you want to extract..."
                   className={`${inputClass} resize-none`}
                   required
                 />
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center justify-end gap-2.5 pt-2">
+              <div className="flex items-center justify-end gap-2.5 pt-2 sm:pt-3">
                 <button
                   type="button"
                   onClick={onClose}
-                  className="rounded-xl px-4 py-2.5 text-xs font-bold text-gray-500 hover:bg-stone-100 hover:text-gray-700 transition cursor-pointer"
+                  className="rounded-xl px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs font-bold text-gray-500 hover:bg-stone-100 hover:text-gray-700 transition cursor-pointer"
                 >
                   Cancel
                 </button>
@@ -271,7 +266,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#ff7c36] via-[#ff6822] to-[#ff5216] px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5 active:scale-95 disabled:opacity-60 cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#ff7c36] via-[#ff6822] to-[#ff5216] px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-bold text-white shadow-md shadow-orange-500/20 transition-all hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5 active:scale-95 disabled:opacity-60 cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>
@@ -281,7 +276,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                   ) : (
                     <>
                       <span>Send Message</span>
-                      <i className="fa-solid fa-arrow-right text-[11px]" />
+                      <i className="fa-solid fa-arrow-right text-[10px]" />
                     </>
                   )}
                 </button>

@@ -24,14 +24,14 @@ const HomeContent = () => {
   const image = activeTab === "results" ? "/result.png" : "/extract.png";
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full max-w-full overflow-hidden">
 
       {/* ================= HOME CONTENT ================= */}
-      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-12">
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-12 pt-2 sm:pt-4 lg:pt-0">
 
         {/* Top Header Badge */}
         <div className="reveal-header flex justify-center">
-          <div className="inline-flex items-center gap-3 rounded-2xl border border-white/70 bg-white/80 px-4 py-2.5 shadow-[0_8px_30px_rgba(15,23,42,0.08)] ring-1 ring-orange-100/60 backdrop-blur-xl">
+          <div className="inline-flex max-w-[calc(100vw-32px)] flex-wrap sm:max-w-none items-center justify-center gap-2 sm:gap-3 rounded-2xl border border-white/70 bg-white/80 px-3 py-1.5 sm:px-4 sm:py-2.5 shadow-[0_8px_30px_rgba(15,23,42,0.08)] ring-1 ring-orange-100/60 backdrop-blur-xl">
             {/* Live indicator */}
             <div className="relative flex h-2.5 w-2.5 shrink-0">
               <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/50" />
@@ -39,17 +39,17 @@ const HomeContent = () => {
             </div>
 
             {/* Label */}
-            <span className="text-[11px] font-bold tracking-[0.12em] text-slate-700">
+            <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.1em] sm:tracking-[0.12em] text-slate-700 whitespace-nowrap">
               INTELLIGENCE SYSTEM
             </span>
 
             {/* Divider */}
-            <span className="h-5 w-px bg-gradient-to-b from-transparent via-slate-200 to-transparent" />
+            <span className="h-4 sm:h-5 w-px bg-gradient-to-b from-transparent via-slate-200 to-transparent" />
 
             {/* Status */}
-            <span className="flex items-center gap-1.5 text-[11px] font-extrabold tracking-[0.08em] text-orange-600">
+            <span className="flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] font-extrabold tracking-[0.06em] sm:tracking-[0.08em] text-orange-600 whitespace-nowrap">
               <svg
-                className="h-3.5 w-3.5"
+                className="h-3 w-3 sm:h-3.5 sm:w-3.5"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -63,27 +63,46 @@ const HomeContent = () => {
         </div>
 
         {/* Main Title */}
-        <div className="reveal-header mt-6 text-center">
+        <div className="reveal-header mt-5 sm:mt-6 text-center">
           <h1 className="font-display mx-auto max-w-4xl text-3xl font-black leading-[1.12] tracking-tight text-[var(--color-dark)] sm:text-5xl lg:text-6xl">
             Extract Google Maps Data <br className="hidden sm:inline" />
             <span className="text-gradient-orange">Directly to Excel</span>
           </h1>
 
-          {/* <p className="mx-auto mt-4 max-w-2xl text-sm font-normal leading-relaxed text-gray-500 sm:text-base lg:text-lg">
-            Scrape Google search results &amp; Google Maps for business data. Collect verified phone numbers, websites, and complete addresses directly into Excel.
-          </p> */}
+          <p className="mx-auto mt-3 sm:mt-4 max-w-2xl text-xs sm:text-base lg:text-lg font-medium leading-relaxed text-gray-500">
+            Extract Google Maps places &amp; search queries automatically. Gather verified phone numbers, websites, reviews, and formatted addresses directly into Excel.
+          </p>
 
-          {/* Button */}
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-            <a
-              href="https://bmoextract.com/extract"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#ff7c36] via-[#ff6822] to-[#ff5216] px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-orange-500/25 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/35 active:scale-95"
-            >
-              <span>Start Extraction Free</span>
-              <i className="fa-solid fa-arrow-right text-xs" />
-            </a>
+          {/* Button & Trust Badges */}
+          <div className="mt-5 sm:mt-7 flex flex-col items-center justify-center gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+              <a
+                href="https://bmoextract.com/extract"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#ff7c36] via-[#ff6822] to-[#ff5216] px-6 sm:px-8 py-3.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-orange-500/25 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/35 active:scale-95"
+              >
+                <span>Start Extraction Free</span>
+                <i className="fa-solid fa-arrow-right text-xs" />
+              </a>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-[11px] sm:text-xs font-semibold text-gray-400 pt-1">
+              <span className="inline-flex items-center gap-1.5 text-emerald-600">
+                <i className="fa-solid fa-file-excel text-emerald-600 text-xs" />
+                Instant .XLSX / .CSV
+              </span>
+              <span className="hidden sm:inline text-gray-300">•</span>
+              <span className="inline-flex items-center gap-1.5 text-orange-600">
+                <i className="fa-solid fa-bolt text-orange-500 text-xs" />
+                Live Cloud Crawling
+              </span>
+              <span className="hidden sm:inline text-gray-300">•</span>
+              <span className="inline-flex items-center gap-1.5 text-slate-600">
+                <i className="fa-solid fa-shield-halved text-slate-500 text-xs" />
+                100% Free Trial
+              </span>
+            </div>
           </div>
         </div>
 

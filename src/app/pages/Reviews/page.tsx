@@ -36,7 +36,7 @@ const ReviewsPage = () => {
   return (
     <section
       id="reviews"
-      className="reveal-section relative overflow-hidden bg-[#FAF9F6] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28"
+      className="reveal-section relative w-full max-w-full overflow-hidden bg-[#FAF9F6] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28"
     >
       <div className="pointer-events-none absolute right-0 top-1/4 h-72 w-72 rounded-full bg-orange-100/40 blur-3xl sm:h-96 sm:w-96" />
 

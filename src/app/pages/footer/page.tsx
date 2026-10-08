@@ -37,7 +37,7 @@ const FooterPage = () => {
     <footer
       ref={footerRef}
       id="footer"
-      className={`relative overflow-hidden bg-[#0B1120] text-slate-300 transition-all duration-700 ease-out ${
+      className={`relative w-full max-w-full overflow-hidden bg-[#0B1120] text-slate-300 transition-all duration-700 ease-out ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >

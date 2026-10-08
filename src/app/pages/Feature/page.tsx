@@ -21,7 +21,7 @@ const Featurepage = () => {
 
   return (
     <section
-      className="feature-section reveal-section scroll-mt-20 relative overflow-hidden bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-24"
+      className="feature-section reveal-section scroll-mt-20 relative w-full max-w-full overflow-hidden bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-24"
       id="feature"
     >
       {/* Background ambient accents */}
@@ -122,7 +122,7 @@ const Featurepage = () => {
                   className={`w-full lg:absolute lg:w-[310px] xl:w-[340px] ${idx === features.length - 1 ? "sm:col-span-2 sm:max-w-md sm:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0" : ""} ${positions[idx % positions.length]}`}
                 >
                   <div
-                    className={`feature-card ${floatVariant} reveal-card ${animDirection} stagger-${idx + 1} group relative z-30 cursor-pointer rounded-2xl border border-gray-100 bg-white p-5 shadow-lg shadow-orange-100/30 transition-all duration-300 ease-out hover:-translate-y-2 hover:border-orange-200 hover:shadow-xl hover:shadow-orange-100/50 sm:p-6`}
+                    className={`feature-card ${floatVariant} reveal-card ${animDirection} stagger-${idx + 1} group relative z-30 overflow-hidden cursor-pointer rounded-2xl border border-gray-100 bg-white p-5 shadow-lg shadow-orange-100/30 transition-all duration-300 ease-out hover:-translate-y-2 hover:border-orange-200 hover:shadow-xl hover:shadow-orange-100/50 sm:p-6`}
                   >
 
                     {/* Decorative Circle */}

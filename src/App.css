@@ -22,6 +22,12 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 0px;
+  overflow-x: hidden;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100vw;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 
 body {
@@ -32,6 +38,28 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+#root {
+  overflow-x: hidden;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100vw;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+/* Hide scrollbar completely across Chrome, Safari, Edge, Opera */
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
 }
 
 * {
@@ -101,19 +129,28 @@ html.lenis body {
 .reveal-card.reveal-fade-up,
 .reveal-fade-up,
 .reveal-card {
-  transform: translateY(52px);
+  transform: translateY(40px);
 }
 
-/* Left to Center: Slide Left */
+/* Default / Mobile & Tablet: Always glide up vertically to prevent horizontal viewport overflow */
 .reveal-card.reveal-left,
-.reveal-left {
-  transform: translateX(-56px);
-}
-
-/* Right to Center: Slide Right */
+.reveal-left,
 .reveal-card.reveal-right,
 .reveal-right {
-  transform: translateX(56px);
+  transform: translateY(28px);
+}
+
+/* Desktop only: Horizontal slide entrance */
+@media (min-width: 1024px) {
+  .reveal-card.reveal-left,
+  .reveal-left {
+    transform: translateX(-56px);
+  }
+
+  .reveal-card.reveal-right,
+  .reveal-right {
+    transform: translateX(56px);
+  }
 }
 
 /* Bottom-Scale to Center: Scale Up */
@@ -942,19 +979,21 @@ html.lenis body {
   transform: translateY(35px);
 }
 
-.reveal-card.reveal-left {
-  opacity: 0;
-  transform: translateX(-70px) translateY(20px);
-}
+@media (min-width: 1024px) {
+  .reveal-card.reveal-left {
+    opacity: 0;
+    transform: translateX(-70px) translateY(20px);
+  }
 
-.reveal-card.reveal-right {
-  opacity: 0;
-  transform: translateX(70px) translateY(20px);
+  .reveal-card.reveal-right {
+    opacity: 0;
+    transform: translateX(70px) translateY(20px);
+  }
 }
 
 .reveal-card.reveal-fade-up {
   opacity: 0;
-  transform: translateY(70px);
+  transform: translateY(40px);
 }
 
 .reveal-scale {

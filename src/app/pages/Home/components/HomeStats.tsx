@@ -20,7 +20,7 @@ const HomePartners = () => {
         </div>
 
         {/* Marquee wrapper */}
-        <div className="reveal-fade-up relative overflow-hidden">
+        <div className="reveal-fade-up relative w-full max-w-full overflow-hidden">
 
           {/* Left fade */}
           <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-white to-transparent sm:w-24" />

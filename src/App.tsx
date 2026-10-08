@@ -20,12 +20,18 @@ function App() {
   useScrollReveal(loading);
 
   useEffect(() => {
-    // Ensure refreshed page starts at the top
+    // Ensure refreshed page starts at Home session (top)
     if (typeof window !== "undefined") {
       if ("scrollRestoration" in window.history) {
         window.history.scrollRestoration = "manual";
       }
+      if (window.location.hash && window.location.hash !== "#home") {
+        window.history.replaceState(null, "", window.location.pathname + "#home");
+      }
       window.scrollTo(0, 0);
+      if (window.lenisInstance) {
+        window.lenisInstance.scrollTo(0, { immediate: true });
+      }
     }
 
     const handleBeforeUnload = () => {
@@ -36,6 +42,9 @@ function App() {
     const timer = setTimeout(() => {
       setLoading(false);
       window.scrollTo(0, 0);
+      if (window.lenisInstance) {
+        window.lenisInstance.scrollTo(0, { immediate: true });
+      }
     }, 1500);
 
     return () => {
@@ -45,7 +54,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[var(--color-light)] text-[var(--color-dark)] selection:bg-[#ff7c36]/20 selection:text-[#ff7c36]">
+    <div className="relative w-full max-w-full overflow-x-hidden [overflow-x:clip] min-h-screen bg-[var(--color-light)] text-[var(--color-dark)] selection:bg-[#ff7c36]/20 selection:text-[#ff7c36]">
       {loading && (
         <div className="loading-screen" role="status" aria-label="Loading BMO Extract">
           <div className="loading-content">

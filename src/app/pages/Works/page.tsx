@@ -4,7 +4,7 @@ const Workspage = () => {
   return (
     <section
       id="workflow"
-      className="reveal-section scroll-mt-20 relative bg-[#FAF9F6] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-24"
+      className="reveal-section scroll-mt-20 relative w-full max-w-full overflow-hidden bg-[#FAF9F6] px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-24"
     >
       <div className="relative mx-auto max-w-7xl">
 
@@ -161,7 +161,7 @@ const WorkflowCard = ({
 }) => {
   return (
     <div className="relative z-10 h-full">
-      <div className="group flex h-[220px] flex-col rounded-2xl border border-gray-200/90 bg-white p-5 text-left shadow-sm transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-orange-300 hover:shadow-lg hover:shadow-orange-500/10">
+      <div className="group flex h-[250px] flex-col rounded-2xl border border-gray-200/90 bg-white p-5 text-left shadow-sm transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-orange-300 hover:shadow-lg hover:shadow-orange-500/10">
         {/* Top Row */}
         <div className="flex items-center">
           {/* Icon (Always step icon, NO tickmark) */}

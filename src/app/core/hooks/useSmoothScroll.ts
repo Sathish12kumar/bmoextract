@@ -145,22 +145,13 @@ export const useSmoothScroll = () => {
 
     document.addEventListener("click", handleAnchorClick);
 
-    // Check if initial URL has a hash like /#workflow or #faq
-    const initialHash = window.location.hash.replace(/^#/, "").toLowerCase();
-    if (initialHash) {
-      setTimeout(() => {
-        const initialEl =
-          document.getElementById(initialHash) ||
-          document.querySelector(`[id="${initialHash}" i]`);
-        if (initialEl) {
-          if (window.lenisInstance) {
-            window.lenisInstance.scrollTo(initialEl, { offset: -84, duration: 1.1 });
-          } else {
-            const elPos = initialEl.getBoundingClientRect().top + window.scrollY;
-            window.scrollTo({ top: elPos - 84, behavior: "smooth" });
-          }
-        }
-      }, 600);
+    // Always start at Home session (top) on refresh or initial load
+    if (window.location.hash && window.location.hash !== "#home") {
+      window.history.replaceState(null, "", window.location.pathname + "#home");
+    }
+    window.scrollTo(0, 0);
+    if (window.lenisInstance) {
+      window.lenisInstance.scrollTo(0, { immediate: true });
     }
 
     return () => {

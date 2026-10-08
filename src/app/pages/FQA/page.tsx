@@ -7,7 +7,7 @@ const FAQPage = () => {
   return (
     <section
       id="faq"
-      className="reveal-section scroll-mt-20 relative bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28"
+      className="reveal-section scroll-mt-20 relative w-full max-w-full overflow-hidden bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-12 lg:py-28"
     >
       {/* =====================================================
           BACKGROUND AMBIENT ACCENTS

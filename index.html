@@ -97,6 +97,9 @@
       if ("scrollRestoration" in history) {
         history.scrollRestoration = "manual";
       }
+      if (window.location.hash && window.location.hash !== "#home") {
+        history.replaceState(null, "", window.location.pathname + "#home");
+      }
       window.scrollTo(0, 0);
     </script>
   </head>
